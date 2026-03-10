@@ -10,11 +10,11 @@ const Footer = (): JSX.Element => {
         <p>
           Site en ligne :{" "}
           <a
-            href="https://portfolio-badji.vercel.app"
+            href="https://mon-portfolio-ztbb.vercel.app/"
             target="_blank"
             className="underline text-accent"
           >
-            portfolio-badji.vercel.app
+            mon-portfolio-ztbb.vercel.app
           </a>
         </p>
         <p>Copyright © {new Date().getFullYear()} - Tous droits réservés</p>

@@ -1,116 +1,73 @@
-import Title from "./Title";
+import React from 'react';
+// Importe tes images ici si tu en as dans le dossier assets
+// import img1 from '../assets/projet1.png'; 
 
-import img1 from "../assets/img1.jpg";
-import img2 from "../assets/img2.jpg";
-import img3 from "../assets/img3.jpg";
-import img4 from "../assets/img4.png";
-import img5 from "../assets/img5.jpg";
-import img6 from "../assets/img6.jpg";
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  // si un projet n'a pas d'image, on peut laisser undefined ou utiliser une image par défaut
+  image?: string;
+  github: string;
+  live: string;
+}
 
-const projects = [
-  {
-    id: 1,
-    title: "Gestionnaire de taches",
-    description: "Application pour organiser les tâches et améliorer la productivité.",
-    technologies: ["React", "Node.js", "Tailwind CSS"],
-    image: img1,
-    github: "https://github.com/Rassoul-Badji/portfolio-badji",
-    live: "https://portfolio-badji.vercel.app",
-  },
-  {
-    id: 2,
-    title: "Plateforme E-commerce",
-    description: "Plateforme de vente en ligne avec gestion des produits et panier.",
-    technologies: ["React", "Node.js", "Tailwind CSS"],
-    image: img2,
-    github: "https://github.com/Rassoul-Badji/portfolio-badji",
-    live: "https://portfolio-badji.vercel.app",
-  },
-  {
-    id: 3,
-    title: "Portfolio Web",
-    description: "Portfolio personnel pour présenter mes projets et compétences.",
-    technologies: ["React", "TypeScript", "Tailwind CSS"],
-    image: img3,
-    live: "https://portfolio-badji.vercel.app",
-  },
-  {
-    id: 4,
-    title: "Application de chat en temps réel",
-    description: "Application de messagerie permettant de discuter instantanément.",
-    technologies: ["React", "Node.js", "Socket.io"],
-    image: img4,
-    live: "https://portfolio-badji.vercel.app",
-  },
-  {
-    id: 5,
-    title: "Système de réservation de salles",
-    description: "Application permettant de réserver des salles de réunion.",
-    technologies: ["React", "Node.js", "MongoDB"],
-    image: img5,
-    github: "https://github.com/Rassoul-Badji/portfolio-badji",
-    live: "https://portfolio-badji.vercel.app",
-  },
-  {
-    id: 6,
-    title: "Analyseur de sentiments",
-    description: "Application qui analyse les sentiments dans les publications des réseaux sociaux.",
-    technologies: ["Python", "React", "API"],
-    image: img6,
-    github: "https://github.com/Rassoul-Badji/portfolio-badji",
-    live: "https://portfolio-badji.vercel.app",
-  },
-];
+const Projects: React.FC = () => {
+  // Voici ton tableau de données propre
+  const projectsList: Project[] = [
+    {
+      id: 1,
+      title: "Gestionnaire de tâches",
+      description: "Application pour organiser les tâches et améliorer la productivité.",
+      technologies: ["React", "Node.js", "Tailwind CSS"],
+      image: "https://via.placeholder.com/400x200?text=Gestionnaire+de+taches",
+      github: "https://github.com/Rassoult/mon-portfolio",
+      live: "https://mon-portfolio-votre-nom.vercel.app" 
+    },
+    {
+      id: 2,
+      title: "Blog Personnel",
+      description: "Un blog pour partager mes pensées et expériences en développement web.",
+      technologies: ["Next.js", "Markdown", "CSS Modules"],
+      image: "https://via.placeholder.com/400x200?text=Blog+Personnel",
+      github: "https://github.com/Rassoult/mon-portfolio",
+      live: "https://mon-portfolio-votre-nom.vercel.app"
+    }
 
-const Projects = (): JSX.Element => {
+  ];
+
   return (
-    <section id="projects" className="mt-10">
-      <Title title="MES PROJETS" />
-
-      <div className="grid gap-6 md:grid-cols-3">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="p-5 bg-gray-800 rounded-xl shadow-lg hover:scale-105 transition"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="object-cover w-full h-56 rounded-xl"
-            />
-
-            <h1 className="mt-3 text-xl font-bold">{project.title}</h1>
-            <p className="text-sm mt-2">{project.description}</p>
-
-            <div className="flex flex-wrap gap-2 my-3">
-              {project.technologies.map((tech, index) => (
-                <span key={index} className="badge badge-accent badge-sm">
-                  {tech}
-                </span>
-              ))}
+    <section className="py-20 bg-slate-50" id="projects">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl font-bold mb-10 text-center text-slate-800">Mes Projets</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectsList.map((project) => (
+            <div key={project.id} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-2xl transition-shadow">
+              <img
+                src={project.image || "https://via.placeholder.com/400x200?text=Image+manquante"}
+                alt={project.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                <p className="text-slate-600 mb-4 text-sm">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-semibold">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex justify-between items-center">
+                  <a href={project.github} target="_blank" rel="noreferrer" className="text-indigo-600 font-medium hover:underline">Code GitHub</a>
+                  <a href={project.live} target="_blank" rel="noreferrer" className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">Live Demo</a>
+                </div>
+              </div>
             </div>
-
-            <div className="flex gap-3 mt-3">
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-primary btn-sm"
-              >
-                Voir le site
-              </a>
-
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-accent btn-sm"
-              >
-                Voir le code
-              </a>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

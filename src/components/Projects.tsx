@@ -23,7 +23,7 @@ const Projects: React.FC = () => {
       technologies: ["React", "Node.js", "Tailwind CSS"],
       image: "https://via.placeholder.com/400x200?text=Gestionnaire+de+taches",
       github: "https://github.com/Rassoult/mon-portfolio",
-      live: "https://mon-portfolio-votre-nom.vercel.app" 
+      live: "https://mon-portfolio-ztbb.vercel.app/"
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ const Projects: React.FC = () => {
       technologies: ["Next.js", "Markdown", "CSS Modules"],
       image: "https://via.placeholder.com/400x200?text=Blog+Personnel",
       github: "https://github.com/Rassoult/mon-portfolio",
-      live: "https://mon-portfolio-votre-nom.vercel.app"
+      live: "https://mon-portfolio-ztbb.vercel.app/"
     }
 
   ];
